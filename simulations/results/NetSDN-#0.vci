@@ -1,0 +1,55 @@
+file 10005 1764089531                                           
+version 3
+run NetSDN-0-20251116-20:31:00-12980
+attr configname NetSDN
+attr datetime 20251116-20:31:00
+attr datetimef 20251116-203100
+attr experiment NetSDN
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network modelingproject4sdn.simulations.NetSDN
+attr processid 12980
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config network modelingproject4sdn.simulations.NetSDN
+config description "SDN-controlled network with topology discovery"
+config sim-time-limit 100s
+config **.sdn.controller.discoveryInterval 5s
+config **.device*.appType "\"App\""
+config **.device*.app.destAddresses "\"1 3 4\""
+config **.device*.app.sendIaTime "uniform(1s, 3s)"
+config **.device*.app.packetLength "1024 bytes"
+config **.frameCapacity 50
+config **.useCutThroughSwitching false
+config **.vector-recording true
+config **.scalar-recording true
+config **.appType "\"App\""
+config **.app.packetLength "4096 bytes"
+
+vector 0 NetSDN.device1.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+0	1564 1005 16 665 1.248877368108 36.491964986548 30 0 0.012328520589 0.205870506 0.0020973764740405
+0	4602 1899 690 1740 37.258878862677 95.83057982445 53 0 0.012328520589 0.408919109304 0.0041690875866746
+vector 1 NetSDN.device3.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+1	2569 918 38 668 1.939629788149 37.095827429089 27 0 0.016671062551 0.23823098954 0.0028707882150783
+1	6501 1896 697 1800 37.587962765173 98.415952969806 55 0 0.016671062551 0.475995481837 0.0061738268401247
+vector 2 NetSDN.device4.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+2	3487 1115 67 612 2.575383055416 33.496763547056 31 0 0.014324704112 0.228222826768 0.0025672511843221
+2	8397 1608 679 1811 37.115225877074 98.825969340672 45 0 0.014324704112 0.330011031683 0.003594503169838

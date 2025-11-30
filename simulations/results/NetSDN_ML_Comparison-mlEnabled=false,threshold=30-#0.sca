@@ -1,0 +1,2752 @@
+version 3
+run NetSDN_ML_Comparison-0-20251116-21:16:26-5760
+attr configname NetSDN_ML_Comparison
+attr datetime 20251116-21:16:26
+attr datetimef 20251116-211626
+attr experiment NetSDN_ML_Comparison
+attr inifile omnetpp_ml.ini
+attr iterationvars "$mlEnabled=false, $threshold=30"
+attr iterationvarsd mlEnabled=false/threshold=30
+attr iterationvarsf mlEnabled=false,threshold=30-
+attr measurement "$mlEnabled=false, $threshold=30"
+attr network modelingproject4sdn.simulations.NetSDN_ML
+attr processid 5760
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar mlEnabled false
+itervar threshold 30
+config extends NetSDN_ML
+config description "Compare traditional vs ML routing"
+config repeat 5
+config **.sdn.controller.enableMLRouting false
+config **.sdn.controller.trainingThreshold 30
+config network modelingproject4sdn.simulations.NetSDN_ML
+config description "ML-Enhanced SDN Routing"
+config **.sdn.controller.discoveryInterval 5s
+config **.sdn.controller.datasetFile "\"sdn_dataset.csv\""
+config **.sdn.controller.enableMLRouting false
+config **.sdn.controller.trainingThreshold 50
+config **.device*.appType "\"App\""
+config **.device*.app.destAddresses "\"1 3 4\""
+config **.device*.app.sendIaTime "uniform(2s, 5s)"
+config **.device*.app.packetLength "2048 bytes"
+config **.frameCapacity 100
+config **.useCutThroughSwitching false
+config **.result-recording-modes all
+config network modelingproject4sdn.simulations.NetSDN_ML
+config description "SDN Network with ML-based Smart Routing"
+config sim-time-limit 300s
+config **.vector-recording true
+config **.scalar-recording true
+
+par NetSDN_ML.device1.port$o[0].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device1.port$o[0].channel disabled false
+attr mutable ""
+par NetSDN_ML.device1.port$o[0].channel delay 0.00549265s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device1.port$o[0].channel datarate 6.3356e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device1.port$o[0].channel ber 0
+attr mutable ""
+par NetSDN_ML.device1.port$o[0].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device1.port$o[0].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device1.port$o[0].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device1.port$o[0].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device1.port$o[0].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device1.port$o[0].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.sdn.port$o[0].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.sdn.port$o[0].channel disabled false
+attr mutable ""
+par NetSDN_ML.sdn.port$o[0].channel delay 0.00715474s
+attr mutable ""
+attr unit s
+par NetSDN_ML.sdn.port$o[0].channel datarate 8.59839e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.sdn.port$o[0].channel ber 0
+attr mutable ""
+par NetSDN_ML.sdn.port$o[0].channel per 0
+attr mutable ""
+scalar NetSDN_ML.sdn.port$o[0].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.sdn.port$o[0].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.sdn.port$o[0].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.sdn.port$o[0].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.sdn.port$o[0].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device2.port$o[0].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device2.port$o[0].channel disabled false
+attr mutable ""
+par NetSDN_ML.device2.port$o[0].channel delay 0.00603161s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device2.port$o[0].channel datarate 8.72151e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device2.port$o[0].channel ber 0
+attr mutable ""
+par NetSDN_ML.device2.port$o[0].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device2.port$o[0].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device2.port$o[0].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device2.port$o[0].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device2.port$o[0].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device2.port$o[0].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.sdn.port$o[1].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.sdn.port$o[1].channel disabled false
+attr mutable ""
+par NetSDN_ML.sdn.port$o[1].channel delay 0.00545338s
+attr mutable ""
+attr unit s
+par NetSDN_ML.sdn.port$o[1].channel datarate 8.62527e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.sdn.port$o[1].channel ber 0
+attr mutable ""
+par NetSDN_ML.sdn.port$o[1].channel per 0
+attr mutable ""
+scalar NetSDN_ML.sdn.port$o[1].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.sdn.port$o[1].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.sdn.port$o[1].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.sdn.port$o[1].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.sdn.port$o[1].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device3.port$o[0].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device3.port$o[0].channel disabled false
+attr mutable ""
+par NetSDN_ML.device3.port$o[0].channel delay 0.00424231s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device3.port$o[0].channel datarate 6.61207e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device3.port$o[0].channel ber 0
+attr mutable ""
+par NetSDN_ML.device3.port$o[0].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device3.port$o[0].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device3.port$o[0].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device3.port$o[0].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device3.port$o[0].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device3.port$o[0].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.sdn.port$o[2].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.sdn.port$o[2].channel disabled false
+attr mutable ""
+par NetSDN_ML.sdn.port$o[2].channel delay 0.00646248s
+attr mutable ""
+attr unit s
+par NetSDN_ML.sdn.port$o[2].channel datarate 4.45944e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.sdn.port$o[2].channel ber 0
+attr mutable ""
+par NetSDN_ML.sdn.port$o[2].channel per 0
+attr mutable ""
+scalar NetSDN_ML.sdn.port$o[2].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.sdn.port$o[2].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.sdn.port$o[2].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.sdn.port$o[2].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.sdn.port$o[2].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device4.port$o[0].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device4.port$o[0].channel disabled false
+attr mutable ""
+par NetSDN_ML.device4.port$o[0].channel delay 0.0043815s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device4.port$o[0].channel datarate 3.67781e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device4.port$o[0].channel ber 0
+attr mutable ""
+par NetSDN_ML.device4.port$o[0].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device4.port$o[0].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device4.port$o[0].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device4.port$o[0].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device4.port$o[0].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device4.port$o[0].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.sdn.port$o[3].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.sdn.port$o[3].channel disabled false
+attr mutable ""
+par NetSDN_ML.sdn.port$o[3].channel delay 0.00891881s
+attr mutable ""
+attr unit s
+par NetSDN_ML.sdn.port$o[3].channel datarate 1.51042e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.sdn.port$o[3].channel ber 0
+attr mutable ""
+par NetSDN_ML.sdn.port$o[3].channel per 0
+attr mutable ""
+scalar NetSDN_ML.sdn.port$o[3].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.sdn.port$o[3].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.sdn.port$o[3].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.sdn.port$o[3].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.sdn.port$o[3].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device5.port$o[0].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device5.port$o[0].channel disabled false
+attr mutable ""
+par NetSDN_ML.device5.port$o[0].channel delay 0.00963699s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device5.port$o[0].channel datarate 3.45391e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device5.port$o[0].channel ber 0
+attr mutable ""
+par NetSDN_ML.device5.port$o[0].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device5.port$o[0].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device5.port$o[0].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device5.port$o[0].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device5.port$o[0].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device5.port$o[0].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.sdn.port$o[4].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.sdn.port$o[4].channel disabled false
+attr mutable ""
+par NetSDN_ML.sdn.port$o[4].channel delay 0.00384058s
+attr mutable ""
+attr unit s
+par NetSDN_ML.sdn.port$o[4].channel datarate 5.29899e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.sdn.port$o[4].channel ber 0
+attr mutable ""
+par NetSDN_ML.sdn.port$o[4].channel per 0
+attr mutable ""
+scalar NetSDN_ML.sdn.port$o[4].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.sdn.port$o[4].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.sdn.port$o[4].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.sdn.port$o[4].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.sdn.port$o[4].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device1.port$o[1].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device1.port$o[1].channel disabled false
+attr mutable ""
+par NetSDN_ML.device1.port$o[1].channel delay 0.00791933s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device1.port$o[1].channel datarate 8.30952e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device1.port$o[1].channel ber 0
+attr mutable ""
+par NetSDN_ML.device1.port$o[1].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device1.port$o[1].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device1.port$o[1].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device1.port$o[1].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device1.port$o[1].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device1.port$o[1].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device2.port$o[1].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device2.port$o[1].channel disabled false
+attr mutable ""
+par NetSDN_ML.device2.port$o[1].channel delay 0.00529366s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device2.port$o[1].channel datarate 5.31979e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device2.port$o[1].channel ber 0
+attr mutable ""
+par NetSDN_ML.device2.port$o[1].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device2.port$o[1].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device2.port$o[1].channel packets:count 97
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device2.port$o[1].channel packetBytes:sum 196608
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device2.port$o[1].channel throughput:last 5304.5988459086
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device2.port$o[1].channel utilization:last 0.00099713319854646
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device1.port$o[2].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device1.port$o[2].channel disabled false
+attr mutable ""
+par NetSDN_ML.device1.port$o[2].channel delay 0.00568477s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device1.port$o[2].channel datarate 4.53506e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device1.port$o[2].channel ber 0
+attr mutable ""
+par NetSDN_ML.device1.port$o[2].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device1.port$o[2].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device1.port$o[2].channel packets:count 95
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device1.port$o[2].channel packetBytes:sum 192512
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device1.port$o[2].channel throughput:last 5216.5550462562
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device1.port$o[2].channel utilization:last 0.0011502576816725
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device4.port$o[1].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device4.port$o[1].channel disabled false
+attr mutable ""
+par NetSDN_ML.device4.port$o[1].channel delay 0.00925671s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device4.port$o[1].channel datarate 8.52471e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device4.port$o[1].channel ber 0
+attr mutable ""
+par NetSDN_ML.device4.port$o[1].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device4.port$o[1].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device4.port$o[1].channel packets:count 55
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device4.port$o[1].channel packetBytes:sum 110592
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device4.port$o[1].channel throughput:last 2974.274510216
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device4.port$o[1].channel utilization:last 0.0003488981642445
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device2.port$o[2].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device2.port$o[2].channel disabled false
+attr mutable ""
+par NetSDN_ML.device2.port$o[2].channel delay 0.00071965s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device2.port$o[2].channel datarate 4.03657e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device2.port$o[2].channel ber 0
+attr mutable ""
+par NetSDN_ML.device2.port$o[2].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device2.port$o[2].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device2.port$o[2].channel packets:count 21
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device2.port$o[2].channel packetBytes:sum 40960
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device2.port$o[2].channel throughput:last 1102.8568726309
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device2.port$o[2].channel utilization:last 0.00027321291311476
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device5.port$o[1].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device5.port$o[1].channel disabled false
+attr mutable ""
+par NetSDN_ML.device5.port$o[1].channel delay 0.000880422s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device5.port$o[1].channel datarate 6.83355e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device5.port$o[1].channel ber 0
+attr mutable ""
+par NetSDN_ML.device5.port$o[1].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device5.port$o[1].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device5.port$o[1].channel packets:count 37
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device5.port$o[1].channel packetBytes:sum 73728
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device5.port$o[1].channel throughput:last 1989.2465589581
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device5.port$o[1].channel utilization:last 0.00029109780118126
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device3.port$o[1].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device3.port$o[1].channel disabled false
+attr mutable ""
+par NetSDN_ML.device3.port$o[1].channel delay 0.000211982s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device3.port$o[1].channel datarate 4.31417e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device3.port$o[1].channel ber 0
+attr mutable ""
+par NetSDN_ML.device3.port$o[1].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device3.port$o[1].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device3.port$o[1].channel packets:count 61
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device3.port$o[1].channel packetBytes:sum 122880
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device3.port$o[1].channel throughput:last 3301.145330955
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device3.port$o[1].channel utilization:last 0.00076517622067395
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device4.port$o[2].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device4.port$o[2].channel disabled false
+attr mutable ""
+par NetSDN_ML.device4.port$o[2].channel delay 0.00832787s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device4.port$o[2].channel datarate 9.6144e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device4.port$o[2].channel ber 0
+attr mutable ""
+par NetSDN_ML.device4.port$o[2].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device4.port$o[2].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device4.port$o[2].channel packets:count 66
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device4.port$o[2].channel packetBytes:sum 133120
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device4.port$o[2].channel throughput:last 3607.0787245349
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device4.port$o[2].channel utilization:last 0.00037517258068556
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device3.port$o[2].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device3.port$o[2].channel disabled false
+attr mutable ""
+par NetSDN_ML.device3.port$o[2].channel delay 0.00778379s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device3.port$o[2].channel datarate 2.26316e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device3.port$o[2].channel ber 0
+attr mutable ""
+par NetSDN_ML.device3.port$o[2].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device3.port$o[2].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device3.port$o[2].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device3.port$o[2].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device3.port$o[2].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device3.port$o[2].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device5.port$o[2].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device5.port$o[2].channel disabled false
+attr mutable ""
+par NetSDN_ML.device5.port$o[2].channel delay 0.00870142s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device5.port$o[2].channel datarate 8.83079e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device5.port$o[2].channel ber 0
+attr mutable ""
+par NetSDN_ML.device5.port$o[2].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device5.port$o[2].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device5.port$o[2].channel packets:count 44
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device5.port$o[2].channel packetBytes:sum 88064
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device5.port$o[2].channel throughput:last 2371.1041418674
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device5.port$o[2].channel utilization:last 0.00026850266047966
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device4.port$o[3].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device4.port$o[3].channel disabled false
+attr mutable ""
+par NetSDN_ML.device4.port$o[3].channel delay 0.0097864s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device4.port$o[3].channel datarate 5.26247e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device4.port$o[3].channel ber 0
+attr mutable ""
+par NetSDN_ML.device4.port$o[3].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device4.port$o[3].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device4.port$o[3].channel packets:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device4.port$o[3].channel packetBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device4.port$o[3].channel throughput:last nan
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device4.port$o[3].channel utilization:last nan
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.device5.port$o[3].channel typename "\"modelingproject4sdn.simulations.NetSDN_ML.C\""
+par NetSDN_ML.device5.port$o[3].channel disabled false
+attr mutable ""
+par NetSDN_ML.device5.port$o[3].channel delay 0.00799359s
+attr mutable ""
+attr unit s
+par NetSDN_ML.device5.port$o[3].channel datarate 8.2082e+06bps
+attr mutable ""
+attr unit bps
+par NetSDN_ML.device5.port$o[3].channel ber 0
+attr mutable ""
+par NetSDN_ML.device5.port$o[3].channel per 0
+attr mutable ""
+scalar NetSDN_ML.device5.port$o[3].channel packetsDiscarded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageDiscarded)
+scalar NetSDN_ML.device5.port$o[3].channel packets:count 25
+attr interpolationmode none
+attr recordingmode count
+attr source constant1(messageSent)
+scalar NetSDN_ML.device5.port$o[3].channel packetBytes:sum 49152
+attr interpolationmode none
+attr recordingmode sum
+attr source packetBytes(messageSent)
+attr unit B
+scalar NetSDN_ML.device5.port$o[3].channel throughput:last 1338.9152979259
+attr recordingmode last
+attr source sumPerDuration(packetBits(messageSent))
+attr unit bps
+scalar NetSDN_ML.device5.port$o[3].channel utilization:last 0.00016311818968676
+attr recordingmode last
+attr source timeavg(channelBusy)
+par NetSDN_ML.sdn.controller typename "\"modelingproject4sdn.SDNController_ML\""
+par NetSDN_ML.sdn.controller address 0
+par NetSDN_ML.sdn.controller discoveryInterval 5s
+attr unit s
+par NetSDN_ML.sdn.controller datasetFile "\"sdn_dataset.csv\""
+par NetSDN_ML.sdn.controller enableMLRouting false
+par NetSDN_ML.sdn.controller trainingThreshold 30
+scalar NetSDN_ML.sdn.controller routingDecision:count 0
+attr recordingmode count
+attr title "routing decisions, count"
+statistic NetSDN_ML.sdn.controller routingDecision:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr title "routing decisions"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic NetSDN_ML.sdn.controller mlPrediction:stats
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode stats
+attr title "ML routing predictions"
+scalar NetSDN_ML.sdn.controller topologyUpdated:count 60
+attr recordingmode count
+attr title "topology update events, count"
+par NetSDN_ML.sdn.queue[0] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.sdn.queue[0] frameCapacity 100
+par NetSDN_ML.sdn.queue[0] useCutThroughSwitching false
+scalar NetSDN_ML.sdn.queue[0] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[0] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[0] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[0] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[0] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[0] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[0] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[0] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[0] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.sdn.queue[0] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.sdn.queue[0] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.sdn.queue[1] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.sdn.queue[1] frameCapacity 100
+par NetSDN_ML.sdn.queue[1] useCutThroughSwitching false
+scalar NetSDN_ML.sdn.queue[1] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[1] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[1] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[1] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[1] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[1] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[1] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[1] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[1] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.sdn.queue[1] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.sdn.queue[1] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.sdn.queue[2] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.sdn.queue[2] frameCapacity 100
+par NetSDN_ML.sdn.queue[2] useCutThroughSwitching false
+scalar NetSDN_ML.sdn.queue[2] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[2] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[2] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[2] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[2] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[2] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[2] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[2] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[2] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.sdn.queue[2] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.sdn.queue[2] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.sdn.queue[3] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.sdn.queue[3] frameCapacity 100
+par NetSDN_ML.sdn.queue[3] useCutThroughSwitching false
+scalar NetSDN_ML.sdn.queue[3] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[3] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[3] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[3] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[3] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[3] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[3] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[3] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[3] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.sdn.queue[3] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.sdn.queue[3] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.sdn.queue[4] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.sdn.queue[4] frameCapacity 100
+par NetSDN_ML.sdn.queue[4] useCutThroughSwitching false
+scalar NetSDN_ML.sdn.queue[4] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[4] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[4] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[4] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[4] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.sdn.queue[4] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.sdn.queue[4] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[4] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.sdn.queue[4] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.sdn.queue[4] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.sdn.queue[4] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.sdn typename "\"modelingproject4sdn.SDNNode_ML\""
+par NetSDN_ML.sdn address 0
+par NetSDN_ML.device1.app typename "\"modelingproject4sdn.App\""
+par NetSDN_ML.device1.app address 1
+par NetSDN_ML.device1.app destAddresses "\"1 3 4\""
+par NetSDN_ML.device1.app sendIaTime "uniform(2s, 5s)"
+attr unit s
+par NetSDN_ML.device1.app packetLength 2048byte
+attr unit byte
+scalar NetSDN_ML.device1.app hopCount:mean 1.2428571428571
+attr interpolationmode none
+attr recordingmode mean
+attr title "hop count of arrived packets, mean"
+scalar NetSDN_ML.device1.app hopCount:max 2
+attr interpolationmode none
+attr recordingmode max
+attr title "hop count of arrived packets, max"
+scalar NetSDN_ML.device1.app endToEndDelay:mean 0.0093371822253214
+attr interpolationmode none
+attr recordingmode mean
+attr title "end-to-end delay of arrived packets, mean"
+attr unit s
+scalar NetSDN_ML.device1.app endToEndDelay:max 0.015188349005
+attr interpolationmode none
+attr recordingmode max
+attr title "end-to-end delay of arrived packets, max"
+attr unit s
+par NetSDN_ML.device1.routing typename "\"modelingproject4sdn.Routing\""
+statistic NetSDN_ML.device1.routing outputIf:histogram
+field count 94
+field mean 2
+field stddev 0
+field min 2
+field max 2
+field sum 188
+field sqrsum 376
+attr interpolationmode none
+attr recordingmode histogram
+attr title "output interface for each routed packet"
+bin	-inf	0
+bin	1	0
+bin	2	94
+bin	3	0
+scalar NetSDN_ML.device1.routing drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.routing drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+par NetSDN_ML.device1.queue[0] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device1.queue[0] frameCapacity 100
+par NetSDN_ML.device1.queue[0] useCutThroughSwitching false
+scalar NetSDN_ML.device1.queue[0] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[0] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device1.queue[0] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device1.queue[0] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[0] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device1.queue[0] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device1.queue[0] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[0] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[0] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device1.queue[0] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device1.queue[0] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device1.queue[1] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device1.queue[1] frameCapacity 100
+par NetSDN_ML.device1.queue[1] useCutThroughSwitching false
+scalar NetSDN_ML.device1.queue[1] rxBytes:count 96
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[1] rxBytes:sum 196608
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device1.queue[1] rxBytes:histogram
+field count 96
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 196608
+field sqrsum 402653184
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	96
+bin	2049	0
+scalar NetSDN_ML.device1.queue[1] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[1] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device1.queue[1] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device1.queue[1] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[1] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[1] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device1.queue[1] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device1.queue[1] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device1.queue[2] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device1.queue[2] frameCapacity 100
+par NetSDN_ML.device1.queue[2] useCutThroughSwitching false
+scalar NetSDN_ML.device1.queue[2] rxBytes:count 54
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[2] rxBytes:sum 110592
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device1.queue[2] rxBytes:histogram
+field count 54
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 110592
+field sqrsum 226492416
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	54
+bin	2049	0
+scalar NetSDN_ML.device1.queue[2] txBytes:count 94
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[2] txBytes:sum 192512
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device1.queue[2] txBytes:histogram
+field count 94
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 192512
+field sqrsum 394264576
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	94
+bin	2049	0
+scalar NetSDN_ML.device1.queue[2] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[2] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device1.queue[2] busy:timeavg 0.0011319915899933
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device1.queue[2] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device1.queue[2] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device1 typename "\"modelingproject4sdn.Node\""
+par NetSDN_ML.device1 address 1
+par NetSDN_ML.device1 appType "\"App\""
+par NetSDN_ML.device2.app typename "\"modelingproject4sdn.App\""
+par NetSDN_ML.device2.app address 2
+par NetSDN_ML.device2.app destAddresses "\"1 3 4\""
+par NetSDN_ML.device2.app sendIaTime "uniform(2s, 5s)"
+attr unit s
+par NetSDN_ML.device2.app packetLength 2048byte
+attr unit byte
+scalar NetSDN_ML.device2.app hopCount:mean nan
+attr interpolationmode none
+attr recordingmode mean
+attr title "hop count of arrived packets, mean"
+scalar NetSDN_ML.device2.app hopCount:max nan
+attr interpolationmode none
+attr recordingmode max
+attr title "hop count of arrived packets, max"
+scalar NetSDN_ML.device2.app endToEndDelay:mean nan
+attr interpolationmode none
+attr recordingmode mean
+attr title "end-to-end delay of arrived packets, mean"
+attr unit s
+scalar NetSDN_ML.device2.app endToEndDelay:max nan
+attr interpolationmode none
+attr recordingmode max
+attr title "end-to-end delay of arrived packets, max"
+attr unit s
+par NetSDN_ML.device2.routing typename "\"modelingproject4sdn.Routing\""
+statistic NetSDN_ML.device2.routing outputIf:histogram
+field count 116
+field mean 1.1724137931034
+field stddev 0.37937848645121
+field min 1
+field max 2
+field sum 136
+field sqrsum 176
+attr interpolationmode none
+attr recordingmode histogram
+attr title "output interface for each routed packet"
+bin	-inf	0
+bin	0	0
+bin	1	96
+bin	2	20
+bin	3	0
+scalar NetSDN_ML.device2.routing drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.routing drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+par NetSDN_ML.device2.queue[0] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device2.queue[0] frameCapacity 100
+par NetSDN_ML.device2.queue[0] useCutThroughSwitching false
+scalar NetSDN_ML.device2.queue[0] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[0] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device2.queue[0] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device2.queue[0] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[0] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device2.queue[0] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device2.queue[0] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[0] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[0] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device2.queue[0] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device2.queue[0] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device2.queue[1] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device2.queue[1] frameCapacity 100
+par NetSDN_ML.device2.queue[1] useCutThroughSwitching false
+scalar NetSDN_ML.device2.queue[1] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[1] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device2.queue[1] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device2.queue[1] txBytes:count 96
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[1] txBytes:sum 196608
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device2.queue[1] txBytes:histogram
+field count 96
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 196608
+field sqrsum 402653184
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	96
+bin	2049	0
+scalar NetSDN_ML.device2.queue[1] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[1] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[1] busy:timeavg 0.0009855418208
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device2.queue[1] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device2.queue[1] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device2.queue[2] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device2.queue[2] frameCapacity 100
+par NetSDN_ML.device2.queue[2] useCutThroughSwitching false
+scalar NetSDN_ML.device2.queue[2] rxBytes:count 36
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[2] rxBytes:sum 73728
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device2.queue[2] rxBytes:histogram
+field count 36
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 73728
+field sqrsum 150994944
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	36
+bin	2049	0
+scalar NetSDN_ML.device2.queue[2] txBytes:count 20
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[2] txBytes:sum 40960
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device2.queue[2] txBytes:histogram
+field count 20
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 40960
+field sqrsum 83886080
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	20
+bin	2049	0
+scalar NetSDN_ML.device2.queue[2] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[2] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device2.queue[2] busy:timeavg 0.00027059307693333
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device2.queue[2] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device2.queue[2] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device2 typename "\"modelingproject4sdn.Node\""
+par NetSDN_ML.device2 address 2
+par NetSDN_ML.device2 appType "\"App\""
+par NetSDN_ML.device3.app typename "\"modelingproject4sdn.App\""
+par NetSDN_ML.device3.app address 3
+par NetSDN_ML.device3.app destAddresses "\"1 3 4\""
+par NetSDN_ML.device3.app sendIaTime "uniform(2s, 5s)"
+attr unit s
+par NetSDN_ML.device3.app packetLength 2048byte
+attr unit byte
+scalar NetSDN_ML.device3.app hopCount:mean 1.2148148148148
+attr interpolationmode none
+attr recordingmode mean
+attr title "hop count of arrived packets, mean"
+scalar NetSDN_ML.device3.app hopCount:max 2
+attr interpolationmode none
+attr recordingmode max
+attr title "hop count of arrived packets, max"
+scalar NetSDN_ML.device3.app endToEndDelay:mean 0.011380001538822
+attr interpolationmode none
+attr recordingmode mean
+attr title "end-to-end delay of arrived packets, mean"
+attr unit s
+scalar NetSDN_ML.device3.app endToEndDelay:max 0.01932948768
+attr interpolationmode none
+attr recordingmode max
+attr title "end-to-end delay of arrived packets, max"
+attr unit s
+par NetSDN_ML.device3.routing typename "\"modelingproject4sdn.Routing\""
+statistic NetSDN_ML.device3.routing outputIf:histogram
+field count 60
+field mean 1
+field stddev 0
+field min 1
+field max 1
+field sum 60
+field sqrsum 60
+attr interpolationmode none
+attr recordingmode histogram
+attr title "output interface for each routed packet"
+bin	-inf	0
+bin	0	0
+bin	1	60
+bin	2	0
+scalar NetSDN_ML.device3.routing drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.routing drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+par NetSDN_ML.device3.queue[0] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device3.queue[0] frameCapacity 100
+par NetSDN_ML.device3.queue[0] useCutThroughSwitching false
+scalar NetSDN_ML.device3.queue[0] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[0] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device3.queue[0] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device3.queue[0] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[0] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device3.queue[0] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device3.queue[0] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[0] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[0] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device3.queue[0] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device3.queue[0] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device3.queue[1] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device3.queue[1] frameCapacity 100
+par NetSDN_ML.device3.queue[1] useCutThroughSwitching false
+scalar NetSDN_ML.device3.queue[1] rxBytes:count 65
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[1] rxBytes:sum 133120
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device3.queue[1] rxBytes:histogram
+field count 65
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 133120
+field sqrsum 272629760
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	65
+bin	2049	0
+scalar NetSDN_ML.device3.queue[1] txBytes:count 60
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[1] txBytes:sum 122880
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device3.queue[1] txBytes:histogram
+field count 60
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 122880
+field sqrsum 251658240
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	60
+bin	2049	0
+scalar NetSDN_ML.device3.queue[1] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[1] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[1] busy:timeavg 0.0007595428752
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device3.queue[1] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device3.queue[1] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device3.queue[2] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device3.queue[2] frameCapacity 100
+par NetSDN_ML.device3.queue[2] useCutThroughSwitching false
+scalar NetSDN_ML.device3.queue[2] rxBytes:count 43
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[2] rxBytes:sum 88064
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device3.queue[2] rxBytes:histogram
+field count 43
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 88064
+field sqrsum 180355072
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	43
+bin	2049	0
+scalar NetSDN_ML.device3.queue[2] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[2] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device3.queue[2] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device3.queue[2] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[2] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device3.queue[2] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device3.queue[2] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device3.queue[2] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device3 typename "\"modelingproject4sdn.Node\""
+par NetSDN_ML.device3 address 3
+par NetSDN_ML.device3 appType "\"App\""
+par NetSDN_ML.device4.app typename "\"modelingproject4sdn.App\""
+par NetSDN_ML.device4.app address 4
+par NetSDN_ML.device4.app destAddresses "\"1 3 4\""
+par NetSDN_ML.device4.app sendIaTime "uniform(2s, 5s)"
+attr unit s
+par NetSDN_ML.device4.app packetLength 2048byte
+attr unit byte
+scalar NetSDN_ML.device4.app hopCount:mean 1.0769230769231
+attr interpolationmode none
+attr recordingmode mean
+attr title "hop count of arrived packets, mean"
+scalar NetSDN_ML.device4.app hopCount:max 2
+attr interpolationmode none
+attr recordingmode max
+attr title "hop count of arrived packets, max"
+scalar NetSDN_ML.device4.app endToEndDelay:mean 0.0086565903869161
+attr interpolationmode none
+attr recordingmode mean
+attr title "end-to-end delay of arrived packets, mean"
+attr unit s
+scalar NetSDN_ML.device4.app endToEndDelay:max 0.017670982765
+attr interpolationmode none
+attr recordingmode max
+attr title "end-to-end delay of arrived packets, max"
+attr unit s
+par NetSDN_ML.device4.routing typename "\"modelingproject4sdn.Routing\""
+statistic NetSDN_ML.device4.routing outputIf:histogram
+field count 119
+field mean 1.546218487395
+field stddev 0.49996439126869
+field min 1
+field max 2
+field sum 184
+field sqrsum 314
+attr interpolationmode none
+attr recordingmode histogram
+attr title "output interface for each routed packet"
+bin	-inf	0
+bin	0	0
+bin	1	54
+bin	2	65
+bin	3	0
+scalar NetSDN_ML.device4.routing drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.routing drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+par NetSDN_ML.device4.queue[0] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device4.queue[0] frameCapacity 100
+par NetSDN_ML.device4.queue[0] useCutThroughSwitching false
+scalar NetSDN_ML.device4.queue[0] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[0] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[0] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device4.queue[0] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[0] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[0] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device4.queue[0] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[0] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[0] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device4.queue[0] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device4.queue[0] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device4.queue[1] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device4.queue[1] frameCapacity 100
+par NetSDN_ML.device4.queue[1] useCutThroughSwitching false
+scalar NetSDN_ML.device4.queue[1] rxBytes:count 94
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[1] rxBytes:sum 192512
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[1] rxBytes:histogram
+field count 94
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 192512
+field sqrsum 394264576
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	94
+bin	2049	0
+scalar NetSDN_ML.device4.queue[1] txBytes:count 54
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[1] txBytes:sum 110592
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[1] txBytes:histogram
+field count 54
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 110592
+field sqrsum 226492416
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	54
+bin	2049	0
+scalar NetSDN_ML.device4.queue[1] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[1] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[1] busy:timeavg 0.00034594964208
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device4.queue[1] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device4.queue[1] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device4.queue[2] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device4.queue[2] frameCapacity 100
+par NetSDN_ML.device4.queue[2] useCutThroughSwitching false
+scalar NetSDN_ML.device4.queue[2] rxBytes:count 60
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[2] rxBytes:sum 122880
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[2] rxBytes:histogram
+field count 60
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 122880
+field sqrsum 251658240
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	60
+bin	2049	0
+scalar NetSDN_ML.device4.queue[2] txBytes:count 65
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[2] txBytes:sum 133120
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[2] txBytes:histogram
+field count 65
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 133120
+field sqrsum 272629760
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	65
+bin	2049	0
+scalar NetSDN_ML.device4.queue[2] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[2] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[2] busy:timeavg 0.00036922408055
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device4.queue[2] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device4.queue[2] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device4.queue[3] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device4.queue[3] frameCapacity 100
+par NetSDN_ML.device4.queue[3] useCutThroughSwitching false
+scalar NetSDN_ML.device4.queue[3] rxBytes:count 24
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[3] rxBytes:sum 49152
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[3] rxBytes:histogram
+field count 24
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 49152
+field sqrsum 100663296
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	24
+bin	2049	0
+scalar NetSDN_ML.device4.queue[3] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[3] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device4.queue[3] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device4.queue[3] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[3] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device4.queue[3] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device4.queue[3] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device4.queue[3] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device4 typename "\"modelingproject4sdn.Node\""
+par NetSDN_ML.device4 address 4
+par NetSDN_ML.device4 appType "\"App\""
+par NetSDN_ML.device5.app typename "\"modelingproject4sdn.App\""
+par NetSDN_ML.device5.app address 5
+par NetSDN_ML.device5.app destAddresses "\"1 3 4\""
+par NetSDN_ML.device5.app sendIaTime "uniform(2s, 5s)"
+attr unit s
+par NetSDN_ML.device5.app packetLength 2048byte
+attr unit byte
+scalar NetSDN_ML.device5.app hopCount:mean nan
+attr interpolationmode none
+attr recordingmode mean
+attr title "hop count of arrived packets, mean"
+scalar NetSDN_ML.device5.app hopCount:max nan
+attr interpolationmode none
+attr recordingmode max
+attr title "hop count of arrived packets, max"
+scalar NetSDN_ML.device5.app endToEndDelay:mean nan
+attr interpolationmode none
+attr recordingmode mean
+attr title "end-to-end delay of arrived packets, mean"
+attr unit s
+scalar NetSDN_ML.device5.app endToEndDelay:max nan
+attr interpolationmode none
+attr recordingmode max
+attr title "end-to-end delay of arrived packets, max"
+attr unit s
+par NetSDN_ML.device5.routing typename "\"modelingproject4sdn.Routing\""
+statistic NetSDN_ML.device5.routing outputIf:histogram
+field count 103
+field mean 1.8834951456311
+field stddev 0.75797680747004
+field min 1
+field max 3
+field sum 194
+field sqrsum 424
+attr interpolationmode none
+attr recordingmode histogram
+attr title "output interface for each routed packet"
+bin	-inf	0
+bin	0	0
+bin	1	36
+bin	2	43
+bin	3	24
+bin	4	0
+scalar NetSDN_ML.device5.routing drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.routing drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+par NetSDN_ML.device5.queue[0] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device5.queue[0] frameCapacity 100
+par NetSDN_ML.device5.queue[0] useCutThroughSwitching false
+scalar NetSDN_ML.device5.queue[0] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[0] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[0] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device5.queue[0] txBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[0] txBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[0] txBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device5.queue[0] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[0] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[0] busy:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device5.queue[0] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device5.queue[0] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device5.queue[1] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device5.queue[1] frameCapacity 100
+par NetSDN_ML.device5.queue[1] useCutThroughSwitching false
+scalar NetSDN_ML.device5.queue[1] rxBytes:count 20
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[1] rxBytes:sum 40960
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[1] rxBytes:histogram
+field count 20
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 40960
+field sqrsum 83886080
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	20
+bin	2049	0
+scalar NetSDN_ML.device5.queue[1] txBytes:count 36
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[1] txBytes:sum 73728
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[1] txBytes:histogram
+field count 36
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 73728
+field sqrsum 150994944
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	36
+bin	2049	0
+scalar NetSDN_ML.device5.queue[1] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[1] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[1] busy:timeavg 0.00028771003284
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device5.queue[1] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device5.queue[1] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device5.queue[2] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device5.queue[2] frameCapacity 100
+par NetSDN_ML.device5.queue[2] useCutThroughSwitching false
+scalar NetSDN_ML.device5.queue[2] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[2] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[2] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device5.queue[2] txBytes:count 43
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[2] txBytes:sum 88064
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[2] txBytes:histogram
+field count 43
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 88064
+field sqrsum 180355072
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	43
+bin	2049	0
+scalar NetSDN_ML.device5.queue[2] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[2] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[2] busy:timeavg 0.00026593029549667
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device5.queue[2] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device5.queue[2] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device5.queue[3] typename "\"modelingproject4sdn.L2Queue\""
+par NetSDN_ML.device5.queue[3] frameCapacity 100
+par NetSDN_ML.device5.queue[3] useCutThroughSwitching false
+scalar NetSDN_ML.device5.queue[3] rxBytes:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "received packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[3] rxBytes:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "received packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[3] rxBytes:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "received packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NetSDN_ML.device5.queue[3] txBytes:count 24
+attr interpolationmode none
+attr recordingmode count
+attr title "transmitting packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[3] txBytes:sum 49152
+attr interpolationmode none
+attr recordingmode sum
+attr title "transmitting packet byte length, sum"
+attr unit bytes
+statistic NetSDN_ML.device5.queue[3] txBytes:histogram
+field count 24
+field mean 2048
+field stddev 0
+field min 2048
+field max 2048
+field sum 49152
+field sqrsum 100663296
+attr interpolationmode none
+attr recordingmode histogram
+attr title "transmitting packet byte length"
+attr unit bytes
+bin	-inf	0
+bin	2047	0
+bin	2048	24
+bin	2049	0
+scalar NetSDN_ML.device5.queue[3] drop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "dropped packet byte length, count"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[3] drop:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "dropped packet byte length, sum"
+attr unit bytes
+scalar NetSDN_ML.device5.queue[3] busy:timeavg 0.00015968428104
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar NetSDN_ML.device5.queue[3] qlen:timeavg 0
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar NetSDN_ML.device5.queue[3] qlen:max 0
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+par NetSDN_ML.device5 typename "\"modelingproject4sdn.Node\""
+par NetSDN_ML.device5 address 5
+par NetSDN_ML.device5 appType "\"App\""
+par NetSDN_ML typename "\"modelingproject4sdn.simulations.NetSDN_ML\""
+

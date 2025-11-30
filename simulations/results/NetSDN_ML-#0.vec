@@ -1,0 +1,906 @@
+version 3
+run NetSDN_ML-0-20251116-22:06:53-13300
+attr configname NetSDN_ML
+attr datetime 20251116-22:06:53
+attr datetimef 20251116-220653
+attr experiment NetSDN_ML
+attr inifile omnetpp_ml.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network modelingproject4sdn.simulations.NetSDN_ML
+attr processid 13300
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config network modelingproject4sdn.simulations.NetSDN_ML
+config description "ML-Enhanced SDN Routing"
+config **.sdn.controller.discoveryInterval 5s
+config **.sdn.controller.datasetFile "\"sdn_dataset.csv\""
+config **.sdn.controller.enableMLRouting false
+config **.sdn.controller.trainingThreshold 50
+config **.device*.appType "\"App\""
+config **.device*.app.destAddresses "\"1 3 4\""
+config **.device*.app.sendIaTime "uniform(2s, 5s)"
+config **.device*.app.packetLength "2048 bytes"
+config *.device*.routing.sdnControllerAddress "\"sdn.controller\""
+config *.device*.routing.discoveryInterval 10s
+config *.device*.routing.sendDiscovery true
+config **.frameCapacity 100
+config **.useCutThroughSwitching false
+config **.result-recording-modes all
+config sim-time-limit 300s
+config **.vector-recording true
+config **.scalar-recording true
+
+vector 0 NetSDN_ML.device1.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 1 NetSDN_ML.sdn.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 2 NetSDN_ML.device2.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 3 NetSDN_ML.sdn.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 4 NetSDN_ML.device3.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 5 NetSDN_ML.sdn.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 6 NetSDN_ML.device4.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 7 NetSDN_ML.sdn.port$o[3].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 8 NetSDN_ML.device5.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 9 NetSDN_ML.sdn.port$o[4].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 10 NetSDN_ML.device1.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 11 NetSDN_ML.device2.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 12 NetSDN_ML.device1.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 13 NetSDN_ML.device4.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 14 NetSDN_ML.device2.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 15 NetSDN_ML.device5.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 16 NetSDN_ML.device3.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 17 NetSDN_ML.device4.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 18 NetSDN_ML.device3.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 19 NetSDN_ML.device5.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 20 NetSDN_ML.device4.port$o[3].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 21 NetSDN_ML.device5.port$o[3].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+vector 22 NetSDN_ML.sdn.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 23 NetSDN_ML.sdn.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 24 NetSDN_ML.sdn.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 25 NetSDN_ML.sdn.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 26 NetSDN_ML.sdn.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 27 NetSDN_ML.sdn.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 28 NetSDN_ML.sdn.queue[3] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 29 NetSDN_ML.sdn.queue[3] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 30 NetSDN_ML.sdn.queue[4] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 31 NetSDN_ML.sdn.queue[4] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 32 NetSDN_ML.device1.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 33 NetSDN_ML.device1.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 34 NetSDN_ML.device1.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 35 NetSDN_ML.device1.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 36 NetSDN_ML.device1.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 37 NetSDN_ML.device1.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 38 NetSDN_ML.device2.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 39 NetSDN_ML.device2.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 40 NetSDN_ML.device2.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 41 NetSDN_ML.device2.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 42 NetSDN_ML.device2.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 43 NetSDN_ML.device2.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 44 NetSDN_ML.device3.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 45 NetSDN_ML.device3.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 46 NetSDN_ML.device3.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 47 NetSDN_ML.device3.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 48 NetSDN_ML.device3.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 49 NetSDN_ML.device3.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 50 NetSDN_ML.device4.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 51 NetSDN_ML.device4.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 52 NetSDN_ML.device4.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 53 NetSDN_ML.device4.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 54 NetSDN_ML.device4.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 55 NetSDN_ML.device4.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 56 NetSDN_ML.device4.queue[3] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 57 NetSDN_ML.device4.queue[3] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 58 NetSDN_ML.device5.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 59 NetSDN_ML.device5.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 60 NetSDN_ML.device5.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 61 NetSDN_ML.device5.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 62 NetSDN_ML.device5.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 63 NetSDN_ML.device5.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 64 NetSDN_ML.device5.queue[3] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 65 NetSDN_ML.device5.queue[3] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+vector 66 NetSDN_ML.sdn.controller topologyUpdated:vector ETV
+attr recordingmode vector
+attr title "topology update events"
+vector 67 NetSDN_ML.device3.routing drop:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "dropped packets"
+vector 68 NetSDN_ML.device5.routing drop:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "dropped packets"
+vector 69 NetSDN_ML.device1.routing drop:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "dropped packets"
+vector 70 NetSDN_ML.device4.routing drop:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "dropped packets"
+vector 71 NetSDN_ML.device2.routing drop:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "dropped packets"
+0	0	0	0
+0	1075	0	0
+1	0	0	0
+1	1075	0	0
+2	0	0	0
+2	1075	0	0
+3	0	0	0
+3	1075	0	0
+4	0	0	0
+4	1075	0	0
+5	0	0	0
+5	1075	0	0
+6	0	0	0
+6	1075	0	0
+7	0	0	0
+7	1075	0	0
+8	0	0	0
+8	1075	0	0
+9	0	0	0
+9	1075	0	0
+10	0	0	0
+10	1075	0	0
+11	0	0	0
+11	1075	0	0
+12	0	0	0
+12	1075	0	0
+13	0	0	0
+13	1075	0	0
+14	0	0	0
+14	1075	0	0
+15	0	0	0
+15	1075	0	0
+16	0	0	0
+16	1075	0	0
+17	0	0	0
+17	1075	0	0
+18	0	0	0
+18	1075	0	0
+19	0	0	0
+19	1075	0	0
+20	0	0	0
+20	1075	0	0
+21	0	0	0
+21	1075	0	0
+22	0	0	0
+23	0	0	0
+24	0	0	0
+25	0	0	0
+26	0	0	0
+27	0	0	0
+28	0	0	0
+29	0	0	0
+30	0	0	0
+31	0	0	0
+32	0	0	0
+33	0	0	0
+34	0	0	0
+35	0	0	0
+36	0	0	0
+37	0	0	0
+38	0	0	0
+39	0	0	0
+40	0	0	0
+41	0	0	0
+42	0	0	0
+43	0	0	0
+44	0	0	0
+45	0	0	0
+46	0	0	0
+47	0	0	0
+48	0	0	0
+49	0	0	0
+50	0	0	0
+51	0	0	0
+52	0	0	0
+53	0	0	0
+54	0	0	0
+55	0	0	0
+56	0	0	0
+57	0	0	0
+58	0	0	0
+59	0	0	0
+60	0	0	0
+61	0	0	0
+62	0	0	0
+63	0	0	0
+64	0	0	0
+65	0	0	0
+66	1	1	0
+66	19	6	0
+66	36	11	0
+66	54	16	0
+66	71	21	0
+66	89	26	0
+66	104	31	0
+66	124	36	0
+66	139	41	0
+66	163	46	0
+66	178	51	0
+66	200	56	0
+66	213	61	0
+66	233	66	0
+66	250	71	0
+66	270	76	0
+66	285	81	0
+66	305	86	0
+66	326	91	0
+66	342	96	0
+66	359	101	0
+66	377	106	0
+66	392	111	0
+66	416	116	0
+66	431	121	0
+66	451	126	0
+66	464	131	0
+66	488	136	0
+66	501	141	0
+66	523	146	0
+66	544	151	0
+66	560	156	0
+66	579	161	0
+66	597	166	0
+66	610	171	0
+66	630	176	0
+66	647	181	0
+66	667	186	0
+66	680	191	0
+66	700	196	0
+66	721	201	0
+66	737	206	0
+66	754	211	0
+66	774	216	0
+66	785	221	0
+66	811	226	0
+66	826	231	0
+66	846	236	0
+66	865	241	0
+66	885	246	0
+66	900	251	0
+66	916	256	0
+66	931	261	0
+66	951	266	0
+66	970	271	0
+66	986	276	0
+66	1001	281	0
+66	1023	286	0
+66	1036	291	0
+66	1058	296	0
+67	8	2.354823271278	2048
+67	18	4.80384786264	2048
+67	29	8.627339862752	2048
+67	45	12.596328638726	2048
+67	51	15.246795038226	2048
+67	60	17.274865143466	2048
+67	76	21.386076985858	2048
+67	86	24.077676055254	2048
+67	97	27.733124820515	2048
+67	113	31.875848715659	2048
+67	126	36.125846458832	2048
+67	132	38.927634060849	2048
+67	150	41.583882164443	2048
+67	162	45.859018120216	2048
+67	173	49.413620254257	2048
+67	189	52.601799365598	2048
+67	202	56.95725809643	2048
+67	210	59.836318948539	2048
+67	224	62.942072757753	2048
+67	239	67.118855861947	2048
+67	249	70.692633709638	2048
+67	267	75.368782695151	2048
+67	278	78.739516960691	2048
+67	284	80.768816256664	2048
+67	298	83.241713069846	2048
+67	313	87.069245803869	2048
+67	323	90.192215389107	2048
+67	341	94.972852664767	2048
+67	346	97.147921721218	2048
+67	356	100.121136305155	2048
+67	372	104.219861489488	2048
+67	383	107.586193928728	2048
+67	401	112.253893904854	2048
+67	409	114.279428669485	2048
+67	424	119.195676184493	2048
+67	440	122.40895099612	2048
+67	453	126.285534927855	2048
+67	466	131.22411570605	2048
+67	481	133.514527562774	2048
+67	490	136.052757766332	2048
+67	500	140.347741099309	2048
+67	518	143.872912258377	2048
+67	529	147.071892317386	2048
+67	537	149.129261010328	2048
+67	548	151.327709391482	2048
+67	562	156.109344824685	2048
+67	572	158.461485713722	2048
+67	590	163.093682099368	2048
+67	601	167.428196882132	2048
+67	619	172.234102553224	2048
+67	634	176.469801432455	2048
+67	640	178.61784827104	2048
+67	660	183.264699277935	2048
+67	671	187.961582559162	2048
+67	691	192.29912085645	2048
+67	699	194.82523706765	2048
+67	710	198.547332599061	2048
+67	720	200.846531436779	2048
+67	732	203.854464072502	2048
+67	739	206.18895224738	2048
+67	749	209.191006110982	2048
+67	763	212.9635787569	2048
+67	773	214.993769839873	2048
+67	784	218.228616395734	2048
+67	800	223.216062278023	2048
+67	813	226.642036620064	2048
+67	823	230.175701985138	2048
+67	845	235.100986015985	2048
+67	858	239.451175937664	2048
+67	876	243.456907400863	2048
+67	889	246.647984912155	2048
+67	897	250.90108179697	2048
+67	911	254.751903330443	2048
+67	926	258.775951763849	2048
+67	942	263.179176396691	2048
+67	948	265.291779456661	2048
+67	959	267.549163267017	2048
+67	969	270.736064261059	2048
+67	983	275.320837148932	2048
+67	994	277.698270616588	2048
+67	1000	280.155364054023	2048
+67	1018	284.968957180624	2048
+67	1031	287.88409727905	2048
+67	1038	291.125437946292	2048
+67	1053	293.360176234041	2048
+67	1057	295.611550312024	2048
+67	1068	298.901987159159	2048
+68	10	2.430059856502	2048
+68	27	7.261304082349	2048
+68	38	11.131834400352	2048
+68	56	16.062117672758	2048
+68	66	19.720582125243	2048
+68	82	23.061958260834	2048
+68	95	27.309467768995	2048
+68	103	30.65324629005	2048
+68	123	35.248046168591	2048
+68	134	38.979731924365	2048
+68	152	42.451108329928	2048
+68	165	46.216059682191	2048
+68	171	48.677142592611	2048
+68	183	51.507823849095	2048
+68	195	55.261252066119	2048
+68	204	57.916460610459	2048
+68	222	62.23643865506	2048
+68	230	64.93314107973	2048
+68	241	68.229585222899	2048
+68	252	71.080141768324	2048
+68	265	74.459709404501	2048
+68	274	76.847946417517	2048
+68	282	80.588537740753	2048
+68	296	82.880943800322	2048
+68	307	86.084722291445	2048
+68	321	89.718494921457	2048
+68	335	93.706008633133	2048
+68	348	97.797433464089	2048
+68	358	100.312992762541	2048
+68	374	104.436745147453	2048
+68	387	109.100876264972	2048
+68	407	113.93499870086	2048
+68	415	115.943108343751	2048
+68	430	120.701702655059	2048
+68	446	125.606561898951	2048
+68	459	128.910843813092	2048
+68	477	132.810029841492	2048
+68	485	135.253086575771	2048
+68	496	137.410611062076	2048
+68	514	142.365410977973	2048
+68	520	144.696842309784	2048
+68	535	148.806494789196	2048
+68	543	150.83256454556	2048
+68	557	153.829137210266	2048
+68	566	156.611850711049	2048
+68	578	160.670936844309	2048
+68	594	164.674081518079	2048
+68	605	169.128181433768	2048
+68	621	172.578362054887	2048
+68	627	175.012435492824	2048
+68	638	177.489874209973	2048
+68	652	181.495691738554	2048
+68	664	185.360110828417	2048
+68	675	189.749301128086	2048
+68	687	192.173820571738	2048
+68	697	194.351970124987	2048
+68	708	197.455722598356	2048
+68	716	200.106333359374	2048
+68	728	203.14942732453	2048
+68	741	206.715954925861	2048
+68	751	210.234891599506	2048
+68	771	214.856388133714	2048
+68	782	217.71902163955	2048
+68	796	221.731306613186	2048
+68	808	225.913937455505	2048
+68	821	229.358063143441	2048
+68	833	231.738246161719	2048
+68	841	234.211897777156	2048
+68	852	237.099747289433	2048
+68	862	240.225798582653	2048
+68	878	244.035767568736	2048
+68	891	246.697352465703	2048
+68	905	251.375473972172	2048
+68	918	256.088793240017	2048
+68	924	258.147180648516	2048
+68	940	262.201578118368	2048
+68	950	265.541218319903	2048
+68	961	268.928966532922	2048
+68	979	273.315602689278	2048
+68	990	276.962141683553	2048
+68	1010	281.497603939143	2048
+68	1025	286.480303197163	2048
+68	1040	291.264178286069	2048
+68	1055	293.616653068219	2048
+68	1064	296.439540189919	2048
+68	1070	299.394677008497	2048
+69	12	3.384438088397	2048
+69	25	7.223628473934	2048
+69	35	10.969179470558	2048
+69	53	15.885014467407	2048
+69	68	20.409172833897	2048
+69	84	23.301483688876	2048
+69	91	26.196330672363	2048
+69	99	28.620122381021	2048
+69	117	33.334065613803	2048
+69	130	37.7151587212	2048
+69	138	40.909821923357	2048
+69	154	43.845209553838	2048
+69	160	45.845375604928	2048
+69	175	50.486268418376	2048
+69	191	53.100865703077	2048
+69	197	55.645759319887	2048
+69	212	60.493715785211	2048
+69	226	63.387241250603	2048
+69	237	66.300987341442	2048
+69	245	69.205783243059	2048
+69	259	71.825567060151	2048
+69	269	75.494855339407	2048
+69	280	79.895990715829	2048
+69	300	83.40627299552	2048
+69	311	86.768760192675	2048
+69	319	89.11521307123	2048
+69	333	93.520721521928	2048
+69	350	97.965620966163	2048
+69	366	102.483188328566	2048
+69	376	104.541090141982	2048
+69	389	109.22567972634	2048
+69	399	112.250774067128	2048
+69	411	114.323713662336	2048
+69	418	116.374328689184	2048
+69	428	119.934185822494	2048
+69	438	122.29694390553	2048
+69	455	127.020570678403	2048
+69	463	129.900003890972	2048
+69	479	133.195358670316	2048
+69	487	135.607112724101	2048
+69	498	138.806517795892	2048
+69	512	142.218380499864	2048
+69	527	146.178643968888	2048
+69	539	149.751195534366	2048
+69	555	152.85966461571	2048
+69	568	156.786719866563	2048
+69	576	159.771856704029	2048
+69	592	164.348189108307	2048
+69	607	169.273158541183	2048
+69	623	174.05536619993	2048
+69	632	176.246027539485	2048
+69	646	180.681843227475	2048
+69	658	183.151803690243	2048
+69	666	185.75483454019	2048
+69	679	190.499746834162	2048
+69	695	194.203284847319	2048
+69	704	196.492637431251	2048
+69	718	200.156572600363	2048
+69	730	203.342272321696	2048
+69	745	206.829122659986	2048
+69	756	211.200509529098	2048
+69	769	214.168998141077	2048
+69	778	216.838873146803	2048
+69	787	221.071176828586	2048
+69	802	223.829276638806	2048
+69	806	225.870871790687	2048
+69	817	228.47278480977	2048
+69	825	230.563409427183	2048
+69	839	233.141947725324	2048
+69	854	238.00859937398	2048
+69	864	240.796999243789	2048
+69	882	245.081309334377	2048
+69	893	249.015512353044	2048
+69	909	252.787268485643	2048
+69	920	257.571196979146	2048
+69	930	260.5999593623	2048
+69	946	264.481441491751	2048
+69	953	266.588186897106	2048
+69	963	269.041877581506	2048
+69	977	271.83966904413	2048
+69	988	276.220371152508	2048
+69	998	279.630352254026	2048
+69	1014	282.011613555951	2048
+69	1016	284.628110930091	2048
+69	1027	286.823475332465	2048
+69	1033	288.904710013187	2048
+69	1047	291.814585779794	2048
+69	1060	296.159057331738	2048
+69	1072	299.666237209226	2048
+70	14	3.919763050973	2048
+70	21	6.10043945047	2048
+70	31	9.41624399065	2048
+70	49	14.264957144856	2048
+70	62	17.992796630365	2048
+70	70	20.739056049613	2048
+70	88	24.765373281203	2048
+70	101	28.721683104289	2048
+70	115	32.568361806683	2048
+70	121	34.731375764822	2048
+70	128	36.826892536599	2048
+70	141	41.079425277421	2048
+70	156	44.932399034966	2048
+70	167	47.489306864562	2048
+70	177	50.880033132853	2048
+70	193	53.946871337947	2048
+70	206	58.879356743768	2048
+70	217	61.323779323837	2048
+70	235	66.242537794402	2048
+70	243	69.010956543265	2048
+70	263	73.376593086636	2048
+70	272	76.35364738619	2048
+70	287	81.065780570731	2048
+70	302	83.544023962459	2048
+70	309	86.255543833832	2048
+70	317	89.015117406846	2048
+70	337	93.98334673117	2048
+70	344	96.707983794856	2048
+70	354	99.525294488064	2048
+70	370	103.084222965176	2048
+70	381	106.823960166192	2048
+70	385	108.97003103816	2048
+70	405	113.190323620337	2048
+70	420	116.807544263081	2048
+70	426	119.490822762485	2048
+70	442	122.998985053507	2048
+70	450	125.741181311664	2048
+70	461	129.533090123209	2048
+70	475	132.636872862932	2048
+70	483	134.977330614581	2048
+70	492	137.298343029806	2048
+70	510	141.884530819954	2048
+70	522	145.728113905994	2048
+70	533	148.03800837137	2048
+70	541	150.279604379555	2048
+70	559	154.59997100779	2048
+70	570	158.142134429656	2048
+70	588	162.934590589723	2048
+70	599	166.383265459214	2048
+70	612	171.016517818675	2048
+70	625	174.383253498005	2048
+70	636	177.029448116433	2048
+70	644	180.283775744263	2048
+70	662	184.950955586277	2048
+70	673	188.713081521915	2048
+70	693	192.720792415553	2048
+70	706	196.965464321199	2048
+70	712	199.697561615381	2048
+70	736	204.494447553997	2048
+70	747	208.683930479224	2048
+70	765	213.099722045009	2048
+70	776	216.73706006771	2048
+70	789	221.089403115213	2048
+70	810	225.9841779524	2048
+70	819	229.240088536172	2048
+70	835	232.075064440259	2048
+70	843	234.261171899504	2048
+70	850	236.751848272282	2048
+70	856	239.360236380716	2048
+70	872	241.978426978924	2048
+70	880	244.185068359599	2048
+70	887	246.258799434873	2048
+70	899	250.920888636262	2048
+70	913	255.012879379793	2048
+70	922	258.121450005799	2048
+70	938	262.08044928685	2048
+70	955	266.895217684099	2048
+70	967	270.603078443791	2048
+70	985	275.592701026705	2048
+70	996	278.584489926929	2048
+70	1007	281.306577864569	2048
+70	1020	285.408163751243	2048
+70	1029	287.652907066979	2048
+70	1049	291.996485594195	2048
+70	1062	296.321124939481	2048
+70	1074	299.946592128836	2048
+71	16	4.341587526957	2048
+71	23	6.854316285346	2048
+71	33	10.812687242171	2048
+71	47	13.103991055628	2048
+71	58	16.630897938506	2048
+71	64	18.644984384765	2048
+71	80	22.361740089254	2048
+71	93	26.342260704375	2048
+71	106	31.01803077897	2048
+71	119	34.239580672001	2048
+71	136	39.071939924964	2048
+71	145	41.327826626132	2048
+71	158	44.937564252176	2048
+71	169	47.584087285445	2048
+71	187	52.17565408931	2048
+71	199	55.842601801035	2048
+71	208	59.301080476259	2048
+71	228	63.561789290047	2048
+71	232	65.830598389496	2048
+71	247	70.412251903907	2048
+71	261	73.19051960064	2048
+71	276	77.234697136794	2048
+71	289	81.142880306345	2048
+71	304	85.990772745105	2048
+71	315	88.037590946535	2048
+71	325	90.526454217265	2048
+71	339	94.190517651149	2048
+71	352	98.865085698663	2048
+71	368	102.531169479246	2048
+71	379	106.307860733242	2048
+71	391	109.296488854102	2048
+71	403	112.927523016463	2048
+71	413	115.2746327247	2048
+71	422	118.804054300067	2048
+71	444	123.465848807012	2048
+71	448	125.649084423668	2048
+71	457	128.562423520721	2048
+71	473	132.384171652607	2048
+71	494	137.312848635949	2048
+71	503	141.056094419909	2048
+71	516	143.175045797135	2048
+71	525	146.018504699226	2048
+71	531	148.022127415752	2048
+71	553	152.183709975565	2048
+71	564	156.461557319155	2048
+71	574	158.997297219466	2048
+71	581	161.278980628121	2048
+71	596	165.979287006659	2048
+71	603	168.891883082222	2048
+71	609	170.899914287962	2048
+71	629	175.328009200282	2048
+71	642	179.317962956614	2048
+71	656	182.583420621696	2048
+71	669	187.473012509056	2048
+71	677	190.042273365426	2048
+71	689	192.177976829698	2048
+71	702	196.401671831729	2048
+71	714	199.953650083626	2048
+71	734	204.395290498622	2048
+71	743	206.799746432109	2048
+71	753	210.404471032554	2048
+71	767	213.645874087698	2048
+71	780	217.206118350382	2048
+71	798	222.051739254267	2048
+71	804	224.65032784501	2048
+71	815	227.418669232399	2048
+71	837	232.133149345637	2048
+71	848	236.410103011409	2048
+71	860	240.13043482974	2048
+71	874	242.35512030497	2048
+71	884	245.844764687817	2048
+71	895	250.711469862608	2048
+71	915	255.481836488468	2048
+71	928	259.500503964953	2048
+71	944	264.203527699223	2048
+71	957	267.276444788089	2048
+71	965	269.967361550311	2048
+71	981	274.241942684863	2048
+71	992	277.04278010805	2048
+71	1003	281.126964424037	2048
+71	1022	285.780045501886	2048
+71	1035	290.084629485615	2048
+71	1051	293.219839597119	2048
+71	1066	297.450433267977	2048
+

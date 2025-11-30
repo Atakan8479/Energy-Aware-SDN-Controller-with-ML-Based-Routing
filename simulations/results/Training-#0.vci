@@ -1,0 +1,85 @@
+file 7004 1764519736                                            
+version 3
+run Training-0-20251130-19:22:14-55640
+attr configname Training
+attr datetime 20251130-19:22:14
+attr datetimef 20251130-192214
+attr experiment Training
+attr inifile omnetppNewML.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network modelingproject4sdn.simulations.NetSDN_ML
+attr processid 55640
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config description "Training phase - baseline (no ML routing, no energy awareness)"
+config sim-time-limit 200s
+config **.controller.enableMLRouting false
+config **.controller.energyAwareRouting false
+config **.controller.trainingThreshold 50
+config **.device*.app.sendIaTime "uniform(1s, 3s)"
+config network modelingproject4sdn.simulations.NetSDN_ML
+config description "SDN Network with ML-based Smart Routing"
+config sim-time-limit 300s
+config **.vector-recording true
+config **.scalar-recording true
+config **.controller.discoveryInterval 5s
+config **.controller.datasetFile "\"sdn_dataset.csv\""
+config **.controller.enableMLRouting false
+config **.controller.trainingThreshold 50
+config **.controller.energyAwareRouting false
+config **.controller.lowBatteryThreshold 20
+config **.controller.batteryWeight 0.4
+config **.controller.linkQualityWeight 0.3
+config **.controller.distanceWeight 0.2
+config **.controller.fairnessWeight 0.1
+config **.device*.appType "\"App\""
+config **.device*.app.destAddresses "\"1 2 3 4 5\""
+config **.device*.app.sendIaTime "uniform(2s, 5s)"
+config **.device*.app.packetLength "2048 bytes"
+config **.device*.routing.sendDiscovery true
+config **.device*.routing.discoveryInterval 10s
+config **.frameCapacity 100
+config **.useCutThroughSwitching false
+
+vector 0 NetSDN_ML.sdn.controller topologyUpdated:vector ETV
+attr recordingmode vector
+attr title "topology update events"
+vector 1 NetSDN_ML.sdn.controller mlPrediction:vector ETV
+attr recordingmode vector
+attr title "ML routing predictions"
+vector 2 NetSDN_ML.device1.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+vector 3 NetSDN_ML.device2.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+vector 4 NetSDN_ML.device3.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+vector 5 NetSDN_ML.device4.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+vector 6 NetSDN_ML.device5.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+0	2910 573 1 16329 1 196 40 0 5 195 975
+2	3483 3294 61 16406 1.310147390413 198.400198791673 82 0.015780417279 0.024968914787 1.576961743492 0.031185440483412
+3	6777 75 5571 9664 5.812264081074 7.95979643375 2 0.027078582888 0.027723056677 0.054801639565 0.0015018175227384
+5	6852 150 742 7460 2.307036072165 6.795900032069 4 0.026267898414 0.027821731073 0.108477705853 0.0029430826323835
+

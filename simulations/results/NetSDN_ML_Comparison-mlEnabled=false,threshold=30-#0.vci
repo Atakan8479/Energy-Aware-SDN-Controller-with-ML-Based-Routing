@@ -1,0 +1,535 @@
+file 139492 1764089531                                          
+version 3
+run NetSDN_ML_Comparison-0-20251116-21:16:26-5760
+attr configname NetSDN_ML_Comparison
+attr datetime 20251116-21:16:26
+attr datetimef 20251116-211626
+attr experiment NetSDN_ML_Comparison
+attr inifile omnetpp_ml.ini
+attr iterationvars "$mlEnabled=false, $threshold=30"
+attr iterationvarsd mlEnabled=false/threshold=30
+attr iterationvarsf mlEnabled=false,threshold=30-
+attr measurement "$mlEnabled=false, $threshold=30"
+attr network modelingproject4sdn.simulations.NetSDN_ML
+attr processid 5760
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar mlEnabled false
+itervar threshold 30
+config extends NetSDN_ML
+config description "Compare traditional vs ML routing"
+config repeat 5
+config **.sdn.controller.enableMLRouting false
+config **.sdn.controller.trainingThreshold 30
+config network modelingproject4sdn.simulations.NetSDN_ML
+config description "ML-Enhanced SDN Routing"
+config **.sdn.controller.discoveryInterval 5s
+config **.sdn.controller.datasetFile "\"sdn_dataset.csv\""
+config **.sdn.controller.enableMLRouting false
+config **.sdn.controller.trainingThreshold 50
+config **.device*.appType "\"App\""
+config **.device*.app.destAddresses "\"1 3 4\""
+config **.device*.app.sendIaTime "uniform(2s, 5s)"
+config **.device*.app.packetLength "2048 bytes"
+config **.frameCapacity 100
+config **.useCutThroughSwitching false
+config **.result-recording-modes all
+config network modelingproject4sdn.simulations.NetSDN_ML
+config description "SDN Network with ML-based Smart Routing"
+config sim-time-limit 300s
+config **.vector-recording true
+config **.scalar-recording true
+
+vector 0 NetSDN_ML.device1.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+0	16101 21 0 3288 0 0 2 0 0 0 0
+vector 1 NetSDN_ML.sdn.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+1	16122 21 0 3288 0 0 2 0 0 0 0
+vector 2 NetSDN_ML.device2.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+2	16143 21 0 3288 0 0 2 0 0 0 0
+vector 3 NetSDN_ML.sdn.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+3	16164 21 0 3288 0 0 2 0 0 0 0
+vector 4 NetSDN_ML.device3.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+4	16185 21 0 3288 0 0 2 0 0 0 0
+vector 5 NetSDN_ML.sdn.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+5	16206 21 0 3288 0 0 2 0 0 0 0
+vector 6 NetSDN_ML.device4.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+6	16227 21 0 3288 0 0 2 0 0 0 0
+vector 7 NetSDN_ML.sdn.port$o[3].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+7	16248 21 0 3288 0 0 2 0 0 0 0
+vector 8 NetSDN_ML.device5.port$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+8	16269 21 0 3288 0 0 2 0 0 0 0
+vector 9 NetSDN_ML.sdn.port$o[4].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+9	16290 21 0 3288 0 0 2 0 0 0 0
+vector 10 NetSDN_ML.device1.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+10	16311 23 0 3288 0 0 2 0 0 0 0
+vector 11 NetSDN_ML.device2.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+11	16334 5249 0 3288 0 296.512588961026 194 0 1 96 96
+vector 12 NetSDN_ML.device1.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+12	21583 5144 0 3288 0 295.236000079742 190 0 1 94 94
+vector 13 NetSDN_ML.device4.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+13	26727 2950 0 3288 0 297.464713948079 110 0 1 54 54
+vector 14 NetSDN_ML.device2.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+14	29677 1109 0 3288 0 297.123302681896 42 0 1 20 20
+vector 15 NetSDN_ML.device5.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+15	30786 1989 0 3288 0 296.508628721159 74 0 1 36 36
+vector 16 NetSDN_ML.device3.port$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+16	32775 3280 0 3288 0 297.791353682296 122 0 1 60 60
+vector 17 NetSDN_ML.device4.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+17	36055 3557 0 3288 0 295.243388956075 132 0 1 65 65
+vector 18 NetSDN_ML.device3.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+18	39612 23 0 3288 0 0 2 0 0 0 0
+vector 19 NetSDN_ML.device5.port$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+19	39635 2366 0 3288 0 297.125877659766 88 0 1 43 43
+vector 20 NetSDN_ML.device4.port$o[3].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+20	42001 23 0 3288 0 0 2 0 0 0 0
+vector 21 NetSDN_ML.device5.port$o[3].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source channelBusy
+21	42024 1316 0 3288 0 293.684502041098 50 0 1 24 24
+vector 22 NetSDN_ML.sdn.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+22	43340 10 0 0 0 0 1 0 0 0 0
+vector 23 NetSDN_ML.sdn.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+23	43350 10 0 0 0 0 1 0 0 0 0
+vector 24 NetSDN_ML.sdn.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+24	43360 10 0 0 0 0 1 0 0 0 0
+vector 25 NetSDN_ML.sdn.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+25	43370 10 0 0 0 0 1 0 0 0 0
+vector 26 NetSDN_ML.sdn.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+26	43380 10 0 0 0 0 1 0 0 0 0
+vector 27 NetSDN_ML.sdn.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+27	43390 10 0 0 0 0 1 0 0 0 0
+vector 28 NetSDN_ML.sdn.queue[3] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+28	43400 10 0 0 0 0 1 0 0 0 0
+vector 29 NetSDN_ML.sdn.queue[3] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+29	43410 10 0 0 0 0 1 0 0 0 0
+vector 30 NetSDN_ML.sdn.queue[4] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+30	43420 10 0 0 0 0 1 0 0 0 0
+vector 31 NetSDN_ML.sdn.queue[4] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+31	43430 10 0 0 0 0 1 0 0 0 0
+vector 32 NetSDN_ML.device1.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+32	43440 10 0 0 0 0 1 0 0 0 0
+vector 33 NetSDN_ML.device1.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+33	43450 10 0 0 0 0 1 0 0 0 0
+vector 34 NetSDN_ML.device1.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+34	43460 10 0 0 0 0 1 0 0 0 0
+vector 35 NetSDN_ML.device1.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+35	43470 10 0 0 0 0 1 0 0 0 0
+vector 36 NetSDN_ML.device1.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+36	43480 10 0 0 0 0 1 0 0 0 0
+vector 37 NetSDN_ML.device1.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+37	43490 5131 0 3233 0 295.236000079742 189 0 1 94 94
+vector 38 NetSDN_ML.device2.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+38	48621 10 0 0 0 0 1 0 0 0 0
+vector 39 NetSDN_ML.device2.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+39	48631 10 0 0 0 0 1 0 0 0 0
+vector 40 NetSDN_ML.device2.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+40	48641 10 0 0 0 0 1 0 0 0 0
+vector 41 NetSDN_ML.device2.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+41	48651 5236 0 3255 0 296.512588961026 193 0 1 96 96
+vector 42 NetSDN_ML.device2.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+42	53887 10 0 0 0 0 1 0 0 0 0
+vector 43 NetSDN_ML.device2.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+43	53897 1096 0 3262 0 297.123302681896 41 0 1 20 20
+vector 44 NetSDN_ML.device3.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+44	54993 10 0 0 0 0 1 0 0 0 0
+vector 45 NetSDN_ML.device3.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+45	55003 10 0 0 0 0 1 0 0 0 0
+vector 46 NetSDN_ML.device3.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+46	55013 10 0 0 0 0 1 0 0 0 0
+vector 47 NetSDN_ML.device3.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+47	55023 3267 0 3283 0 297.791353682296 121 0 1 60 60
+vector 48 NetSDN_ML.device3.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+48	58290 10 0 0 0 0 1 0 0 0 0
+vector 49 NetSDN_ML.device3.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+49	58300 10 0 0 0 0 1 0 0 0 0
+vector 50 NetSDN_ML.device4.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+50	58310 10 0 0 0 0 1 0 0 0 0
+vector 51 NetSDN_ML.device4.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+51	58320 10 0 0 0 0 1 0 0 0 0
+vector 52 NetSDN_ML.device4.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+52	58330 10 0 0 0 0 1 0 0 0 0
+vector 53 NetSDN_ML.device4.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+53	58340 2937 0 3276 0 297.464713948079 109 0 1 54 54
+vector 54 NetSDN_ML.device4.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+54	61277 10 0 0 0 0 1 0 0 0 0
+vector 55 NetSDN_ML.device4.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+55	61287 3544 0 3237 0 295.243388956075 131 0 1 65 65
+vector 56 NetSDN_ML.device4.queue[3] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+56	64831 10 0 0 0 0 1 0 0 0 0
+vector 57 NetSDN_ML.device4.queue[3] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+57	64841 10 0 0 0 0 1 0 0 0 0
+vector 58 NetSDN_ML.device5.queue[0] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+58	64851 10 0 0 0 0 1 0 0 0 0
+vector 59 NetSDN_ML.device5.queue[0] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+59	64861 10 0 0 0 0 1 0 0 0 0
+vector 60 NetSDN_ML.device5.queue[1] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+60	64871 10 0 0 0 0 1 0 0 0 0
+vector 61 NetSDN_ML.device5.queue[1] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+61	64881 1976 0 3251 0 296.508628721159 73 0 1 36 36
+vector 62 NetSDN_ML.device5.queue[2] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+62	66857 10 0 0 0 0 1 0 0 0 0
+vector 63 NetSDN_ML.device5.queue[2] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+63	66867 2353 0 3266 0 297.125877659766 87 0 1 43 43
+vector 64 NetSDN_ML.device5.queue[3] qlen:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+64	69220 10 0 0 0 0 1 0 0 0 0
+vector 65 NetSDN_ML.device5.queue[3] busy:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "server busy state"
+65	69230 1303 0 3225 0 293.684502041098 49 0 1 24 24
+vector 66 NetSDN_ML.device3.queue[1] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+66	70533 1812 8 3282 2.354823271278 297.78755596792 60 2048 2048 122880 251658240
+vector 67 NetSDN_ML.device4.queue[2] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+67	72345 1811 10 3284 2.358832967461 297.791565664103 60 2048 2048 122880 251658240
+vector 68 NetSDN_ML.device4.queue[1] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+68	74156 1622 12 3275 2.358832967461 297.462792005623 54 2048 2048 110592 226492416
+vector 69 NetSDN_ML.device1.queue[2] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+69	75778 1623 14 3277 2.370011620283 297.473970658445 54 2048 2048 110592 226492416
+vector 70 NetSDN_ML.device1.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+70	77401 5203 16 3279 2.370011620283 297.473970658445 140 0 0.015188349005 1.307205511545 0.015962174670018
+vector 71 NetSDN_ML.device1.app hopCount:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "hop count of arrived packets"
+71	82604 3796 16 3279 2.370011620283 297.473970658445 140 0 2 174 300
+vector 72 NetSDN_ML.device1.app sourceAddress:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "source address of arrived packets"
+72	86400 3796 16 3279 2.370011620283 297.473970658445 140 1 5 440 1688
+vector 73 NetSDN_ML.device5.queue[1] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+73	90196 1090 19 3250 2.430059856502 296.506231137552 36 2048 2048 73728 150994944
+vector 74 NetSDN_ML.device2.queue[2] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+74	91286 1089 21 3252 2.433337861786 296.509509142836 36 2048 2048 73728 150994944
+vector 75 NetSDN_ML.device2.queue[1] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+75	92375 2900 23 3254 2.433337861786 296.509509142836 96 2048 2048 196608 402653184
+vector 76 NetSDN_ML.device1.queue[1] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+76	95275 2905 25 3256 2.441711340242 296.517882621292 96 2048 2048 196608 402653184
+vector 77 NetSDN_ML.device1.queue[2] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+77	98180 2849 30 3232 3.384438088397 295.232387340625 94 2048 2048 192512 394264576
+vector 78 NetSDN_ML.device4.queue[1] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+78	101029 2845 32 3234 3.393735592706 295.241684844934 94 2048 2048 192512 394264576
+vector 79 NetSDN_ML.device4.queue[2] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+79	103874 1962 34 3236 3.393735592706 295.241684844934 65 2048 2048 133120 272629760
+vector 80 NetSDN_ML.device3.queue[1] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+80	105836 1965 36 3238 3.403767576077 295.251716828305 65 2048 2048 133120 272629760
+vector 81 NetSDN_ML.device3.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+81	107801 5042 38 3269 3.403767576077 297.134579081097 135 0 0.01932948768 1.536300207741 0.023635886900493
+vector 82 NetSDN_ML.device3.app hopCount:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "hop count of arrived packets"
+82	112843 3674 38 3269 3.403767576077 297.134579081097 135 0 2 164 276
+vector 83 NetSDN_ML.device3.app sourceAddress:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "source address of arrived packets"
+83	116517 3674 38 3269 3.403767576077 297.134579081097 135 1 5 388 1398
+vector 84 NetSDN_ML.device4.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "end-to-end delay of arrived packets"
+attr unit s
+84	120191 5395 59 3286 4.764487487257 297.791565664103 143 0 0.017670982765 1.237892425329 0.016746306083166
+vector 85 NetSDN_ML.device4.app hopCount:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "hop count of arrived packets"
+85	125586 3900 59 3286 4.764487487257 297.791565664103 143 0 2 154 232
+vector 86 NetSDN_ML.device4.app sourceAddress:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "source address of arrived packets"
+86	129486 3900 59 3286 4.764487487257 297.791565664103 143 1 5 428 1520
+vector 87 NetSDN_ML.sdn.controller topologyUpdated:vector ETV
+attr recordingmode vector
+attr title "topology update events"
+87	133386 861 60 3287 5 300 60 0 0 0 0
+vector 88 NetSDN_ML.device5.queue[2] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+88	134247 1300 74 3265 6.282966359052 297.124022332123 43 2048 2048 88064 180355072
+vector 89 NetSDN_ML.device3.queue[2] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+89	135547 1301 76 3267 6.293523108026 297.134579081097 43 2048 2048 88064 180355072
+vector 90 NetSDN_ML.device5.queue[3] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+90	136848 719 149 3224 12.589400913333 293.682505987585 24 2048 2048 49152 100663296
+vector 91 NetSDN_ML.device4.queue[3] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+91	137567 717 151 3226 12.599390560899 293.692495635151 24 2048 2048 49152 100663296
+vector 92 NetSDN_ML.device2.queue[2] txBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "transmitting packet byte length"
+attr unit bytes
+92	138284 601 156 3261 14.106988413493 297.119243785742 20 2048 2048 40960 83886080
+vector 93 NetSDN_ML.device5.queue[1] rxBytes:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "received packet byte length"
+attr unit bytes
+93	138885 607 158 3263 14.111766959874 297.124022332123 20 2048 2048 40960 83886080
