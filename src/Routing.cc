@@ -14,6 +14,7 @@ using namespace omnetpp;
 
 /**
  * Enhanced routing with SDN discovery and data forwarding through SDN
+ * + battery-aware behaviour (FSM) on each node.
  */
 class Routing : public cSimpleModule
 {
@@ -29,14 +30,16 @@ class Routing : public cSimpleModule
     bool sendDiscovery;
     double discoveryInterval;
 
+    // CHANGE 1: new battery model – per–node FSM and timer
+    //           (before: only a simple scalar batteryLevel updated inline)
     cMessage *batteryTimer;
     cFSM batteryFsm;
     enum {
-        BAT_ACTIVE = 0,
+        BAT_ACTIVE   = 0,
         BAT_CHARGING = 1
     };
 
-
+    // (existing signals, unchanged in meaning)
     simsignal_t dropSignal;
     simsignal_t outputIfSignal;
 
@@ -48,42 +51,43 @@ class Routing : public cSimpleModule
     void sendDiscoveryPacket();
     double calculateDistanceToSDN();
     int getGateToSDN();
-    void processBatteryTimer();
-    void updateBatteryOnActivity(double minDrain, double maxDrain);
+
+    // CHANGE 2: new helpers for the battery model
+    void processBatteryTimer();                           // periodic FSM update
+    void updateBatteryOnActivity(double minDrain, double maxDrain); // per-packet drain
 
   public:
     virtual ~Routing();
 };
-
 
 Define_Module(Routing);
 
 Routing::~Routing()
 {
     cancelAndDelete(discoveryTimer);
+    // CHANGE 3: delete the new battery timer as well
     cancelAndDelete(batteryTimer);
 }
 
-
 void Routing::initialize()
 {
-    myAddress   = getParentModule()->par("address");
+    myAddress    = getParentModule()->par("address");
     batteryLevel = 100.0;
-    sdnAddress  = 0;  // SDN controller address is always 0
+    sdnAddress   = 0;  // SDN controller address is always 0
 
-    // --- Battery FSM & timer ---
+    // CHANGE 4: initialise FSM and start periodic battery timer
     batteryFsm.setName("batteryFsm");
     batteryFsm.setState(BAT_ACTIVE);          // start in ACTIVE state
     batteryTimer = new cMessage("batteryTimer");
     scheduleAt(simTime() + 1, batteryTimer);  // periodic battery updates
 
-    // --- Discovery / routing setup ---
+    // Discovery / routing setup (as before)
     sendDiscovery     = par("sendDiscovery").boolValue();
     discoveryInterval = par("discoveryInterval");
     dropSignal        = registerSignal("drop");
     outputIfSignal    = registerSignal("outputIf");
 
-    // Build routing table using cTopology - include both Node and SDNNode_ML
+    // Routing table build (same logic as before, just formatted)
     cTopology *topo = new cTopology("topo");
     std::vector<std::string> nedTypes;
     nedTypes.push_back("modelingproject4sdn.Node");
@@ -95,7 +99,6 @@ void Routing::initialize()
 
     cTopology::Node *thisNode = topo->getNodeFor(getParentModule());
     if (thisNode) {
-        // Calculate shortest paths to all destinations
         for (int i = 0; i < topo->getNumNodes(); i++) {
             if (topo->getNode(i) == thisNode)
                 continue;
@@ -118,7 +121,7 @@ void Routing::initialize()
     EV << "Node " << myAddress << ": Routing table has "
        << rtable.size() << " entries\n";
 
-    // Verify we have a route to SDN
+    // Verify we have a route to SDN (unchanged)
     if (rtable.find(sdnAddress) != rtable.end()) {
         EV << "Node " << myAddress << ": Route to SDN controller FOUND via gate "
            << rtable[sdnAddress] << "\n";
@@ -127,7 +130,7 @@ void Routing::initialize()
         EV << "Node " << myAddress << ": WARNING - No route to SDN controller!\n";
     }
 
-    // Schedule discovery if enabled
+    // Discovery timer setup (same logic)
     if (sendDiscovery && myAddress != sdnAddress) {
         discoveryTimer = new cMessage("discoveryTimer");
         scheduleAt(simTime() + uniform(0.5, 2.0), discoveryTimer);
@@ -149,61 +152,78 @@ int Routing::getGateToSDN()
 void Routing::handleMessage(cMessage *msg)
 {
     if (msg == discoveryTimer) {
+        // periodic discovery (as before)
         sendDiscoveryPacket();
         scheduleAt(simTime() + discoveryInterval, discoveryTimer);
     }
+    // CHANGE 5: new branch – periodic battery FSM update
     else if (msg == batteryTimer) {
         processBatteryTimer();
     }
+    // CHANGE 6: local traffic now gated by battery FSM, with structured drain
     else if (msg->arrivedOn("localIn")) {
         Packet *pkt = check_and_cast<Packet *>(msg);
 
+        // if node is not ACTIVE, drop local traffic
         if (batteryFsm.getState() != BAT_ACTIVE) {
-            EV << "Node " << myAddress << ": battery not available for transmission, dropping local packet\n";
+            EV << "Node " << myAddress
+               << ": battery not available for transmission, dropping local packet\n";
             delete pkt;
             return;
         }
 
         int destAddr = pkt->getDestAddr();
-        EV << "Node " << myAddress << ": Sending DATA packet to " << destAddr << " via SDN controller\n";
+        EV << "Node " << myAddress << ": Sending DATA packet to "
+           << destAddr << " via SDN controller\n";
 
+        // activity-based battery drain (was inline uniform() before)
         updateBatteryOnActivity(0.05, 0.2);
 
+        // propagate updated metrics to packet
         pkt->setBatteryLevel(batteryLevel);
         pkt->setHopCount(pkt->getHopCount() + 1);
         pkt->setPathDelay(pkt->getPathDelay() + uniform(0.001, 0.005));
 
         int sdnGate = getGateToSDN();
         if (sdnGate >= 0) {
-            EV << "Node " << myAddress << ": Forwarding to SDN via gate " << sdnGate << "\n";
+            EV << "Node " << myAddress
+               << ": Forwarding to SDN via gate " << sdnGate << "\n";
             emit(outputIfSignal, sdnGate);
             send(pkt, "out", sdnGate);
         }
         else {
-            EV << "Node " << myAddress << ": ERROR - No route to SDN controller, dropping\n";
+            EV << "Node " << myAddress
+               << ": ERROR - No route to SDN controller, dropping\n";
             emit(dropSignal, (long)pkt->getByteLength());
             delete pkt;
         }
     }
+    // CHANGE 7: transit traffic also checks battery FSM and uses shared drain helper
     else {
         Packet *pkt = check_and_cast<Packet *>(msg);
         int destAddr = pkt->getDestAddr();
 
-        EV << "Node " << myAddress << ": Received packet destined to " << destAddr << "\n";
+        EV << "Node " << myAddress
+           << ": Received packet destined to " << destAddr << "\n";
 
         if (destAddr == myAddress) {
+            // simplified: we now always deliver to localOut
+            // (old code special-cased DISCOVERY packets)
             EV << "Node " << myAddress << ": Packet arrived at destination\n";
             send(pkt, "localOut");
         }
         else {
             if (batteryFsm.getState() != BAT_ACTIVE) {
-                EV << "Node " << myAddress << ": battery not available for forwarding, dropping transit packet\n";
+                EV << "Node " << myAddress
+                   << ": battery not available for forwarding, dropping transit packet\n";
                 delete pkt;
                 return;
             }
 
-            EV << "Node " << myAddress << ": Forwarding packet to " << destAddr << "\n";
+            EV << "Node " << myAddress
+               << ": Forwarding packet to " << destAddr << "\n";
 
+            // smaller drain for transit forwarding
             updateBatteryOnActivity(0.02, 0.1);
 
             pkt->setBatteryLevel(batteryLevel);
@@ -217,7 +237,8 @@ void Routing::handleMessage(cMessage *msg)
                 send(pkt, "out", outGateIndex);
             }
             else {
-                EV << "Node " << myAddress << ": No route to " << destAddr << ", dropping\n";
+                EV << "Node " << myAddress
+                   << ": No route to " << destAddr << ", dropping\n";
                 emit(dropSignal, (long)pkt->getByteLength());
                 delete pkt;
             }
@@ -225,10 +246,9 @@ void Routing::handleMessage(cMessage *msg)
     }
 }
 
-
 void Routing::sendDiscoveryPacket()
 {
-    // If the node is not in ACTIVE state, it cannot send discovery packets
+    // CHANGE 8: discovery is now also gated by battery FSM
     if (batteryFsm.getState() != BAT_ACTIVE) {
         EV << "Node " << myAddress
            << ": battery not available (state=" << batteryFsm.getState()
@@ -236,12 +256,12 @@ void Routing::sendDiscoveryPacket()
         return;
     }
 
-    EV << "Node " << myAddress << ": Sending discovery packet to SDN controller\n";
+    EV << "Node " << myAddress
+       << ": Sending discovery packet to SDN controller\n";
 
-    // Battery drain caused by discovery transmission (random amount)
+    // use shared helper for discovery drain (instead of inline uniform())
     updateBatteryOnActivity(0.1, 0.5);
 
-    // Create discovery packet
     char pkname[40];
     sprintf(pkname, "discovery-%d", myAddress);
 
@@ -255,23 +275,26 @@ void Routing::sendDiscoveryPacket()
     discoveryPkt->setByteLength(512);
     discoveryPkt->setHopCount(0);
 
-    // Send to SDN controller
     int sdnGate = getGateToSDN();
     if (sdnGate >= 0) {
-        EV << "Node " << myAddress << ": Sending discovery via gate " << sdnGate << "\n";
+        EV << "Node " << myAddress
+           << ": Sending discovery via gate " << sdnGate << "\n";
         send(discoveryPkt, "out", sdnGate);
     }
     else {
-        EV << "Node " << myAddress << ": ERROR - No route to SDN controller!\n";
+        EV << "Node " << myAddress
+           << ": ERROR - No route to SDN controller!\n";
         delete discoveryPkt;
     }
 }
 
 double Routing::calculateDistanceToSDN()
 {
+    // same simple synthetic distance model as before
     return uniform(10.0, 100.0) + (myAddress * 5.0);
 }
 
+// CHANGE 9: new FSM-based periodic battery evolution
 void Routing::processBatteryTimer()
 {
     FSM_Switch(batteryFsm)
@@ -283,8 +306,8 @@ void Routing::processBatteryTimer()
 
             if (batteryLevel < 20.0) {
                 FSM_Goto(batteryFsm, BAT_CHARGING);
-                EV << "Node " << myAddress << ": battery low (" << batteryLevel
-                   << "%), entering CHARGING state\n";
+                EV << "Node " << myAddress << ": battery low ("
+                   << batteryLevel << "%), entering CHARGING state\n";
             }
             break;
 
@@ -304,7 +327,7 @@ void Routing::processBatteryTimer()
     scheduleAt(simTime() + 1, batteryTimer);
 }
 
-
+// CHANGE 10: centralised helper for per-packet drain + state transitions
 void Routing::updateBatteryOnActivity(double minDrain, double maxDrain)
 {
     if (batteryFsm.getState() != BAT_ACTIVE)
@@ -331,6 +354,7 @@ void Routing::updateBatteryOnActivity(double minDrain, double maxDrain)
     }
 }
 
+// CHANGE 11: finish() now reports the FSM state label, not just the %
 void Routing::finish()
 {
     const char *stateName = "unknown";
@@ -343,4 +367,3 @@ void Routing::finish()
     EV << "Node " << myAddress << ": Final battery level = "
        << batteryLevel << "%, state = " << stateName << "\n";
 }
-
