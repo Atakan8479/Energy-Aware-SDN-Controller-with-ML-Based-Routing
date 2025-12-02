@@ -22,12 +22,14 @@ class SDNController_ML : public cSimpleModule
     bool enableMLRouting;
     double trainingThreshold;
 
-    bool   energyAwareRouting;
-    double lowBatteryThreshold;
-    double batteryWeight;
-    double linkQualityWeight;
-    double distanceWeight;
-    double fairnessWeight;
+    // CHANGE 1: New parameters for energy-aware routing
+    //           (read from NED/omnetpp.ini and used to bias path selection)
+    bool   energyAwareRouting;    // master flag: enable/disable energy-aware scoring
+    double lowBatteryThreshold;   // below this, nodes are treated as “low battery”
+    double batteryWeight;         // weight of battery level in score
+    double linkQualityWeight;     // weight of link quality in score
+    double distanceWeight;        // weight of (inverted) distance in score
+    double fairnessWeight;        // weight of neighbor degree / fairness term
 
     cMessage *discoveryTimer;
 
@@ -89,6 +91,9 @@ class SDNController_ML : public cSimpleModule
     double calculateEuclideanDistance(const FlowData &a, const FlowData &b);
     double calculatePathQuality(int srcAddr, int destAddr, int pathIndex);
     int findGateToDestination(int destAddr);
+
+    // CHANGE 2: New helper that scores *per-gate* next hops using energy metrics
+    //           and optionally keeps the ML / traditional suggestion as “preferred”.
     int selectEnergyAwareGate(int srcAddr, int destAddr, int preferredGate);
 
   public:
@@ -112,6 +117,8 @@ void SDNController_ML::initialize()
     enableMLRouting = par("enableMLRouting");
     trainingThreshold = par("trainingThreshold");
 
+    // CHANGE 3: Read energy-aware parameters from NED/ini
+    //           so different configs can toggle and tune the scoring.
     energyAwareRouting   = par("energyAwareRouting");
     lowBatteryThreshold  = par("lowBatteryThreshold");
     batteryWeight        = par("batteryWeight");
@@ -127,6 +134,7 @@ void SDNController_ML::initialize()
     mlModel.k = 3;
     totalFlowsProcessed = 0;
 
+    // Open dataset file
     datasetStream.open(datasetFile, std::ios::out);
     if (datasetStream.is_open()) {
         datasetStream << "timestamp,src_addr,dest_addr,src_battery,dest_battery,"
@@ -143,6 +151,8 @@ void SDNController_ML::initialize()
     EV << "SDN Controller initialized at address " << myAddress << "\n";
     EV << "ML Routing: " << (enableMLRouting ? "ENABLED" : "DISABLED") << "\n";
     EV << "Training Threshold: " << trainingThreshold << " samples\n";
+
+    // CHANGE 4: Extra log line to show whether energy-aware routing is active.
     EV << "Energy-aware routing: " << (energyAwareRouting ? "ENABLED" : "DISABLED")
        << " (lowBatteryThreshold=" << lowBatteryThreshold << "%)\n";
 }
@@ -241,12 +251,17 @@ int SDNController_ML::findGateToDestination(int destAddr)
     return gateIndex;
 }
 
+// CHANGE 5: New per-gate energy-aware scoring function.
+//           It looks at each neighbor (gate) and combines battery, link quality,
+//           distance and connectivity into a single score. The original ML/traditional
+//           choice is passed in as 'preferredGate' and gets a small bonus.
 int SDNController_ML::selectEnergyAwareGate(int srcAddr, int destAddr, int preferredGate)
 {
     int numGates = gateSize("out");
     if (numGates <= 0)
         return -1;
 
+    // Compute average battery to define a fairness baseline.
     double avgBattery = 100.0;
     if (!nodeDatabase.empty()) {
         double sum = 0.0;
@@ -263,8 +278,10 @@ int SDNController_ML::selectEnergyAwareGate(int srcAddr, int destAddr, int prefe
     int bestGate = preferredGate;
 
     for (int i = 0; i < numGates; i++) {
+        // Map gate index to neighbor address (1..N) in this small testbed.
         int neighborAddr = i + 1;
 
+        // Default (optimistic) metrics if we have never seen this neighbor.
         double battery   = 100.0;
         double quality   = 90.0;
         double distance  = 50.0;
@@ -275,7 +292,7 @@ int SDNController_ML::selectEnergyAwareGate(int srcAddr, int destAddr, int prefe
             NodeMetrics &nm = it->second;
             battery  = nm.batteryLevel;
             quality  = nm.linkQuality;
-            distance = 100.0 - std::min(nm.distance, 100.0);
+            distance = 100.0 - std::min(nm.distance, 100.0); // closer → higher score
             degree   = (double)nm.connectedNeighbors;
         }
 
@@ -290,9 +307,11 @@ int SDNController_ML::selectEnergyAwareGate(int srcAddr, int destAddr, int prefe
             fairnessWeight     * degree    -
             fairnessWeight     * fairnessPenalty;
 
+        // Strong penalty if node is below lowBatteryThreshold
         if (battery < lowBatteryThreshold)
             score -= 50.0;
 
+        // Small bias to keep the original ML/traditional suggestion when scores tie.
         if (i == preferredGate)
             score += 5.0;
 
@@ -330,6 +349,7 @@ void SDNController_ML::forwardDataPacket(Packet *pkt)
     if (outGateIndex >= 0 && outGateIndex < gateSize("out")) {
         EV << "  Forwarding via gate " << outGateIndex << "\n";
 
+        // (unchanged) – we still log flows and export them to CSV
         FlowData fd;
         fd.srcAddr = srcAddr;
         fd.destAddr = destAddr;
@@ -355,6 +375,9 @@ void SDNController_ML::forwardDataPacket(Packet *pkt)
     }
 }
 
+// CHANGE 6: ML path selection now *delegates* to energy-aware gate scoring
+//           when the flag is enabled. Otherwise, behaviour is identical
+//           to the original controller.
 int SDNController_ML::findBestRouteML(int srcAddr, int destAddr)
 {
     int predictedPath = predictBestPath(srcAddr, destAddr);
@@ -373,6 +396,9 @@ int SDNController_ML::findBestRouteML(int srcAddr, int destAddr)
     return gate;
 }
 
+// CHANGE 7: Traditional routing also calls selectEnergyAwareGate()
+//           instead of a fixed QoS-only score when energyAwareRouting is ON.
+//           When OFF, it falls back to the simple star-topology mapping.
 int SDNController_ML::findBestRouteTraditional(int srcAddr, int destAddr)
 {
     int directGate = findGateToDestination(destAddr);
@@ -481,6 +507,9 @@ double SDNController_ML::calculateEuclideanDistance(const FlowData &a, const Flo
     return sqrt(d1*d1 + d2*d2 + d3*d3);
 }
 
+// CHANGE 8: Path quality metric now also reflects *battery levels*,
+//           not just link quality. This allows offline analysis of
+//           how energy-aware decisions correlate with the exported score.
 double SDNController_ML::calculatePathQuality(int srcAddr, int destAddr, int pathIndex)
 {
     double quality = 50.0;
